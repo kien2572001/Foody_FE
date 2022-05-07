@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.nav-top{
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    .nav-wrapper{
+        //display: flex;
+        height: 120px;
+        background-color: #fff;
+        //box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100vw;
+        display: block;
+        
+        .brand-logo{
+            padding: 0 50px;
+            display: flex;
+            width: 345px;
+            justify-content: flex-start;
+            background-color: #dd2f6e;
+            align-items: center;
+            height: 100%;
+            float: left;
+            .logo-icon{
+                width: 45px;
+            }
+
+            .logo-text{
+                margin: 5px 0px 0px 20px;
+            }
+        }
+
+        .header-content{
+            width: calc(100% - 345px);
+            height: 100%;
+            padding-left: 5.3125rem;
+            padding-right: 1.875rem;
+            float: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .title{
+                font-size: 28px;
+                font-weight: 700;
+            }
+            .avatar-block{
+                width: 250px;
+                display: flex;
+                
+                cursor: pointer;
+                .name-tag{
+                    text-align: right;
+                    padding-right: 20px;
+                    .say-hello{
+                        font-size: 13px;
+                        font-weight: 400;
+                        line-height: 2.2;
+                        color: #89879f;
+                    }
+
+                    .name{
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+                }
+                .avatar{
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+

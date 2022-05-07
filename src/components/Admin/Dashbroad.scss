@@ -1,0 +1,20 @@
+.dash-container{
+    margin: 0 0;
+    padding: 0 0;
+    display: block;
+    overflow: hidden;
+    .left-side{
+        width: 345px;
+        padding-top: 15px;
+        height: 1000px;
+        background-color: #dd2f6e;
+        display: block;
+        float: left;
+    }
+
+    .right-side{
+        width: calc(100% - 345px);
+        float: left;
+        height: 1000px;
+    }
+}
