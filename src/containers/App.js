@@ -12,18 +12,18 @@ import {
 
 import { path } from "../utils";
 
-import Home from "../routes/Home";
-// import Login from '../routes/Login';
-import Header from "./Header/Header";
-import System from "../routes/System";
-
 import { CustomToastCloseButton } from "../components/CustomToast";
 import ConfirmModal from "../components/ConfirmModal";
 
-import Login from "../auth/Login";
-import Dashbroad from "../components/Admin/Dashbroad";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+//Component
+import NavBar from "../components/NavBar/NavBar";
+import SideBar from "../components/SideBar/SideBar";
+import Home from "../components/Home/Home";
+import Login from "../auth/Login";
+import Dashbroad from "../components/Admin/Dashbroad";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -48,25 +48,6 @@ class App extends Component {
     return (
       <Fragment>
         <Router history={history}>
-          {/* <div className="main-container">
-                        <ConfirmModal />
-                        {this.props.isLoggedIn && <Header />}
-
-                        <span className="content-container">
-                            <Switch>
-                                <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                            </Switch>
-                        </span>
-
-                        <ToastContainer
-                            className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"
-                            autoClose={false} hideProgressBar={true} pauseOnHover={false}
-                            pauseOnFocusLoss={true} closeOnClick={false} draggable={false}
-                            closeButton={<CustomToastCloseButton />}
-                        />
-                    </div> */}
           <div class="main-container">
             {this.props.isLoggedIn ? <Dashbroad /> : <Login />}
           </div>

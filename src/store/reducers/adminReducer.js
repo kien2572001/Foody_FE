@@ -4,6 +4,7 @@ const initialState = {
   isLoggedIn: false,
   adminInfo: null,
   isAdmin: false,
+  token: null,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -20,13 +21,22 @@ const appReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         adminInfo: null,
+        token: null,
       };
+
+    case actionTypes.SET_TOKEN:
+      return {
+        ...state,
+        token: action.token,
+      };
+
     case actionTypes.PROCESS_LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
         adminInfo: null,
         isAdmin: false,
+        token: null,
       };
     default:
       return state;

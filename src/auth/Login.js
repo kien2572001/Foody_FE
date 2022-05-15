@@ -25,8 +25,10 @@ const Login = (props) => {
         email: username,
         password: password,
       });
-      console.log(respone);
+      console.log(respone.access_token);
       props.adminLoginSuccess(respone.user_info);
+      props.setToken(respone.access_token);
+      props.navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -130,6 +132,7 @@ const mapDispatchToProps = (dispatch) => {
     processLogout: () => dispatch(actions.processLogout()),
     adminLoginSuccess: (adminInfo) =>
       dispatch(actions.adminLoginSuccess(adminInfo)),
+    setToken: (token) => dispatch(actions.setToken(token)),
   };
 };
 

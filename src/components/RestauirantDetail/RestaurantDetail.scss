@@ -1,0 +1,445 @@
+
+
+.restaurant-detail{
+    max-width: 1170px;
+    min-width: 1170px;
+    overflow: hidden;
+    .restaurant-detail-header{
+        display: flex;
+        .img-container{
+            width: 38.3% ;
+            display: block;
+            img{
+                width: 100%;
+            }
+        }
+
+        .restaurant-detail-header-info{
+            width: 61.7%;
+            display: block;
+            font-size: 14px;
+            padding-left: 25px;
+            padding-top: 15px;
+            
+            .name{
+                font-size: 20px;
+                font-weight: 700;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            
+
+            .rating{
+                position: relative;
+                border: 1px solid #e0dddd;
+                border-left: 0;
+                border-right: 0;
+                overflow: hidden;
+                clear: both;
+                display: flex;
+                justify-content: space-between;
+                margin-right: 100px;
+                padding: 10px 0;
+                margin-top: 8px;
+                margin-bottom: 5px;
+                .rating-total{
+                    color: #fff;
+                    background: #03ae03;
+                    text-align: center;
+                    border-radius: 100px;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    overflow: hidden;
+                    font-size: 18px;
+                    margin-right: 25px;
+                }
+
+                .rating-count{
+                    
+                    display: block;
+                    margin-right: 8px;
+                    //padding: 10px 0 6px 0;
+                    font-size: 20px;
+                    font-weight: 700;
+                    text-shadow: 0 1px 1px #fff;
+                    width: 70px;
+                    .number{
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: #03ae03;
+                    }
+                    .text{
+                        font-weight: 400;
+                        color: #777;
+                        font-size: 12px;
+                        //padding-top: 8px;
+                    }
+                }
+
+                .rating-comment{
+                    display: block;
+                    text-align: center;
+                    margin-right: 8px;
+                    //padding: 10px 0 6px 0;
+                    font-size: 20px;
+                    text-shadow: 0 1px 1px #fff;
+                    width: 70px;
+                    .number{
+                        font-size: 20px;
+                        font-weight: 400;
+                        opacity: 0.9;
+                    }
+                    .text{
+                        font-weight: 400;
+                        color: #777;
+                        font-size: 12px;
+                        //padding-top: 8px;
+                    }
+                }
+            }
+
+            .box{
+                padding: 8px 0;
+                i{
+                    margin-right: 6px;
+                }
+            }
+
+            .address{
+
+            }
+
+            .price{}
+
+            .time{
+
+            }
+        }
+    }
+
+    .restaurant-detail-body{
+        .left-side{
+            //height: 900px;
+            height: 100%;
+            width: 160px;
+            float: left;
+            background-color: #eee;
+            .nav-item{
+                display: block;
+                position: relative;
+                padding: 8px 10px;
+                text-decoration: none;
+                font-weight: 400;
+                border-bottom: #e6e6e6 1px solid;
+                border-left: 1px solid #e6e6e6;
+                cursor: pointer;
+                &:hover{
+                    color: red ;
+                    border-left: 1px solid red;
+
+                }
+            }
+        }
+
+        .right-side{
+            //height: 900px;
+            width: 1010px;
+            float: left;
+            padding: 0;
+            padding-left: 15px;
+            background-color: #eee;
+            
+            .menu-box{
+                background-color: #fff;
+                .menu-box-header{
+                    padding: 10px 15px 0px 10px;
+                    border-bottom: 1px solid #eee;
+                    margin-bottom: 20px;
+                    background-color: #fff;
+                    font-weight: 700;
+                    cursor: pointer;
+                    font-size: 16px;
+                    padding: 10px 15px;
+                }
+
+                .menu-box-body{
+                    display: flex;
+                    flex-wrap: wrap;
+                    .menu-item{
+                        min-width: 480px;
+                        overflow: hidden;
+                        border-bottom: #f5f5f5 1px solid;
+                        padding-bottom: 10px;
+                        height: 70px;
+                        box-sizing: border-box;
+                        margin-left: 15px;
+                        margin-bottom: 10px;
+                        .menu-item-img{
+                            width: 60px;
+                            display: block;
+                            float: left;
+                            img{
+                                width: 60px;
+                            }
+                        }
+
+                        .menu-item-name{
+                            width: 250px;
+                            float: left;
+                            color: #464646;
+                            font-weight: 700;
+                            font-size: 15px;
+                            margin-left: 15px;
+                        }
+
+                        .menu-item-price{
+                            float: left;
+                            display: flex;
+                            padding-top: 25px;
+                            padding-left: 30px;
+                            .price{
+                                color: #206b9b;
+                                font-size: 14px;
+                                font-weight: 700;
+                                width: 70px;
+                            }
+
+                            .btn-add{
+                                width: 22px;
+                                height: 22px;
+                                text-align: center;
+                                line-height: 22px;
+                                font-size: 20px;
+                                color: #fff;
+                                font-weight: 700;
+                                border-radius: 4px;
+                                -moz-border-radius: 4px;
+                                -webkit-border-radius: 4px;
+                                background-color: #EE4D2D;
+                                display: inline-block;
+                                margin-left: 10px;
+                                cursor: pointer !important;
+                                outline: 0;
+                            }
+                        }
+                    }
+
+                }
+                
+                .more-detail-btn{
+                    background-color: #EE4D2D;
+                    font-size: 14px;
+                    padding: 10px;
+                    overflow: hidden;
+                    border-radius: 2px;
+                    color: #fff;
+                    display: block;
+                    cursor: pointer;
+                    text-align: center;
+
+                }
+            }
+
+            .comment-box{
+                width: 100%;
+                overflow: hidden;
+                background-color:  #eee;
+                .list-comment{
+                    overflow: hidden;
+                    width: 700px;
+                    float: left;
+                    .comment-item{
+                        padding: 15px 15px 0 15px;
+                        overflow: hidden;
+                        background-color: #fff;
+                        .comment-item-header{
+                            
+                            padding-bottom: 10px;
+                            overflow: hidden;
+                            border-bottom: 1px solid #eee;
+                            .avatar{
+                                display: block;
+                                float: left;
+                                img{
+                                    border-radius: 50%;
+                                }
+                                margin-right: 15px;
+                                
+                            }
+
+                            .info{
+                                display: block;
+                                float: left;
+                                .name{
+                                    overflow: hidden;
+                                    display: block;
+                                    white-space: nowrap;
+                                    text-transform: capitalize;
+                                    text-overflow: ellipsis;
+                                    float: left;
+                                    padding: 0 3px 0 0;
+                                    box-sizing: border-box;
+                                    font-weight: 700
+                                }
+
+                                .time{
+
+                                }
+                            }
+
+                            .rating{
+                                display: block;
+                                float: right;
+                                width: 32px;
+                                background: #03ae03;
+                                text-align: center;
+                                border-radius: 50%;
+                                display: block;
+                                width: 32px;
+                                height: 32px;
+                                font-size: 12px;
+                                line-height: 32px;
+                                overflow: hidden;
+                                color: #fff;
+                            }
+                        }
+
+                        .comment-item-body{
+                            .restaurant-name{
+                                margin-top: 12px;
+                                padding: 8px 0;
+                                font-size: 14px;
+                                font-weight: 700;
+                                display: block;
+                                word-wrap: break-word;
+                            }
+
+                            .comment-content{
+                                white-space: pre-line;
+                                font-size: 14px;
+                                line-height: 1.4em;
+                                word-wrap: break-word;
+                            }
+                            
+                        }
+
+                        .comment-item-footer{
+                            overflow: hidden;
+                            margin: 10px 0;
+                            .comment-btn{
+                                display: block;
+                                float: left;
+                                opacity: 0.7;
+                                margin-right: 20px;
+                                font-size: 12px;
+                                i{
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .comment-summary{
+                    width: 273px;
+                    overflow: hidden;
+                    background-color: #fff;
+                    float: left;
+                    margin-left: 22px;
+
+                    .comment-summary-header{
+                        padding: 20px 0 15px;
+                        font-size: 16px;
+                        overflow: hidden;
+                        text-align: center;
+                        border-bottom: #f6f6f6 1px solid;
+                        .number{
+                            font-weight: bold;
+                            text-align: center;
+                            font-size: 16px;
+                        }
+                    }
+
+                    .comment-summary-body{
+                        overflow: hidden;
+                        .comment-detail{
+                            overflow: hidden;
+                            .rating-item{
+                                padding: 10px 40px;
+                                clear: both;
+                                font-size: 14px;
+                                overflow: hidden;
+                                .number{
+                                    display: block;
+                                    float: left;
+                                    color: #8E44AD;
+                                    font-size: 16px;
+                                    width: 60px;
+                                    float: left;
+                                    text-align: right;
+                                    padding-right: 10px;
+                                    font-weight: bold;
+                                }
+
+                                .text{
+                                    display: block;
+                                    float: left;
+                                }
+                            }
+                        }
+
+                        .rating-total{
+                            padding: 15px 0;
+                            border-top: #eee 1px solid;
+                            overflow: hidden;
+                            .rating-total-box{
+                                overflow: hidden;
+                                display: flex;
+                                justify-content: center;
+                                .number{
+                                    font-size: 22px;
+                                    color: #8E44AD;
+                                    font-weight: bold;
+                                    display: block;
+                                    span{
+                                        color: #999;
+                                        font-size: 11px;
+                                        opacity: 0.7;
+                                    }
+                                }
+    
+                                .text{
+                                    margin-top: 9px;
+                                    margin-left: 5px ;
+                                    display: block;
+                                }
+                            }
+                            
+                        }
+                    }
+
+                    .blank-box{
+                        width: 100%;
+                        height: 10px;
+                        background-color: #eee;
+                    }
+
+                    .comment-btn{
+                        padding: 10px 0;
+                        font-size: 14px;
+                        background: #049ec5;
+                        border-radius: 2px;
+                        color: #fff;
+                        overflow: hidden;
+                        display: block;
+                        cursor: pointer;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
