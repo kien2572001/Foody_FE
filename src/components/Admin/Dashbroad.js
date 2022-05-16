@@ -44,6 +44,7 @@ const Dashbroad = () => {
                 component={RestaurantManage}
                 //component={RestaurantDetail}
               />
+              <Route path="/restaurant/:id" children={<RestaurantDetail />} />
               <Route path="/" exact component={Home} />
             </Switch>
           </div>
