@@ -19,9 +19,6 @@ import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Component
-import NavBar from "../components/NavBar/NavBar";
-import SideBar from "../components/SideBar/SideBar";
-import Home from "../components/Home/Home";
 import Login from "../auth/Login";
 import Dashbroad from "../components/Admin/Dashbroad";
 
