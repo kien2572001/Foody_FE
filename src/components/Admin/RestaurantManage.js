@@ -115,8 +115,9 @@ const RestaurantsManage = (props) => {
   };
 
   const handleSaveNewRestaurant = async () => {
-    console.log("Save");
-    setNewRestaurant({
+    //console.log("Save");
+
+    let temp = {
       name: name,
       address: address,
       phone: phone,
@@ -125,13 +126,12 @@ const RestaurantsManage = (props) => {
       price_from: price_from,
       price_to: price_to,
       image: url,
-    });
+    };
+
+    //console.log(temp);
 
     try {
-      let res = await adminService.saveNewRestaurant(
-        props.token,
-        newRestaurant
-      );
+      let res = await adminService.saveNewRestaurant(props.token, temp);
       if (res === true) {
         alert("Thêm mới thành công");
         resetForm();
@@ -364,12 +364,16 @@ const RestaurantsManage = (props) => {
       {/* Container  */}
       <div className="restaurant-manage-container">
         <div className="new-restaurant">
-          <div
-            className="new-btn"
-            onClick={() => handleShowNewRestaurantModal()}
-          >
-            + New Restaurant
-          </div>
+          {props.isAdmin === 1 ? (
+            <div
+              className="new-btn"
+              onClick={() => handleShowNewRestaurantModal()}
+            >
+              + New Restaurant
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div class="container-fluid">
           <div className="row">
@@ -381,6 +385,7 @@ const RestaurantsManage = (props) => {
                   token={props.token}
                   getAllRestaurants={getAllRestaurants}
                   handleEdit={handleEdit}
+                  isAdmin={props.isAdmin}
                 />
               );
             })}
@@ -395,6 +400,7 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.admin.isLoggedIn,
     token: state.admin.token,
+    isAdmin: state.admin.isAdmin,
   };
 };
 

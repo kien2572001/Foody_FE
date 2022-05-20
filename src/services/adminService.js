@@ -85,6 +85,17 @@ const adminService = {
       headers: headers,
     });
   },
+
+  //Restaurant action
+  getAllPostsByRestaurantId(token, restaurantId) {
+    let headers = {
+      accpet: "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    return axios.get(`api/get-all-posts/${restaurantId}`, {
+      headers: headers,
+    });
+  },
 };
 
 export default adminService;

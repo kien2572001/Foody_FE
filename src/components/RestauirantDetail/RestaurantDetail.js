@@ -7,6 +7,8 @@ import { Modal, Button } from "react-bootstrap";
 import Dropzone from "react-dropzone";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
+import CommentModal from "./CommentModal";
+import moment from "moment";
 const RestaurantDetail = (props) => {
   let { id } = useParams();
   const [restaurant, setRestaurant] = useState({
@@ -28,14 +30,32 @@ const RestaurantDetail = (props) => {
       countComment: 410,
     },
   });
-  const [showDish, setDish] = useState(false);
+  const [rating, setRating] = useState({
+    overall: 9.9,
+    location: 9.9,
+    price: 9.9,
+    service: 9.9,
+    quality: 9.9,
+    space: 9.9,
+    countComment: 410,
+  });
+
+  const [posts, setPosts] = useState([]);
+  const [showDishDetail, setShowDishDetail] = useState(false);
   const [showAddDish, setAddDish] = useState(false);
   const [nameDish, setNameDish] = useState("");
   const [priceDish, setPriceDish] = useState("");
   const [imageDish, setImageDish] = useState("");
   const [descriptionDish, setDescriptionDish] = useState("");
 
+  const [dish, setDish] = useState([]);
+
   const [menu, setMenu] = useState([]);
+  const handleShowDishDetail = (id) => {
+    let dish = menu.find((item) => item.id === id);
+    setDish(dish);
+    setShowDishDetail(true);
+  };
 
   const resetAddDish = () => {
     setNameDish("");
@@ -107,9 +127,62 @@ const RestaurantDetail = (props) => {
     }
   };
 
+  const getPostsByRestaurantId = async () => {
+    try {
+      let temp = await adminService.getAllPostsByRestaurantId(props.token, id);
+      let count = temp.length;
+      if (count === 0) {
+        setRating({
+          overall: 0,
+          location: 0,
+          price: 0,
+          service: 0,
+          quality: 0,
+          space: 0,
+          countComment: 0,
+        });
+
+        return;
+      }
+      let overall = 0;
+      let location = 0;
+      let price = 0;
+      let service = 0;
+      let quality = 0;
+      let space = 0;
+      for (let i = 0; i < temp.length; i++) {
+        location += parseFloat(temp[i].location);
+        price += parseFloat(temp[i].price);
+        service += parseFloat(temp[i].service);
+        quality += parseFloat(temp[i].quality);
+        space += parseFloat(temp[i].space);
+        overall +=
+          (parseFloat(temp[i].location) +
+            parseFloat(temp[i].price) +
+            parseFloat(temp[i].service) +
+            parseFloat(temp[i].quality) +
+            parseFloat(temp[i].space)) /
+          5;
+      }
+      setRating({
+        overall: overall / count,
+        location: location / count,
+        price: price / count,
+        service: service / count,
+        quality: quality / count,
+        space: space / count,
+      });
+      setPosts(temp);
+      console.log(temp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getRestaurantById();
     getDishByRestaurantId();
+    getPostsByRestaurantId();
   }, []);
 
   const nav = [
@@ -143,24 +216,23 @@ const RestaurantDetail = (props) => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        show={showDish}
-        onHide={() => setDish(false)}
+        show={showDishDetail}
+        onHide={() => setShowDishDetail(false)}
+        dialogClassName="dish-modal-modify"
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
+        <Modal.Body bsPrefix="dish-detail-modal-body">
+          <div className="dish-detail-container">
+            <div className="dish-detail-image">
+              <img src={dish.image} alt="" />
+            </div>
+            <div className="img-content">
+              <div className="dish-detail-name">{dish.name}</div>
+              <div className="dish-detail-price">{dish.price}đ</div>
+            </div>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setDish(false)}>Close</Button>
+        <Modal.Footer bsPrefix="dish-detail-footer">
+          <Button onClick={() => setShowDishDetail(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
 
@@ -268,29 +340,29 @@ const RestaurantDetail = (props) => {
           <div className="restaurant-detail-header-info">
             <div className="name">{restaurant.name}</div>
             <div className="rating">
-              <div className="rating-total">9.9</div>
+              <div className="rating-total">{rating.overall.toFixed(1)}</div>
               <div className="rating-count">
-                <div className="number">9.9</div>
+                <div className="number">{rating.location.toFixed(1)}</div>
                 <div className="text">Vị trí</div>
               </div>
               <div className="rating-count">
-                <div className="number">9.9</div>
+                <div className="number">{rating.price.toFixed(1)}</div>
                 <div className="text">Giá cả</div>
               </div>
               <div className="rating-count">
-                <div className="number">9.9</div>
+                <div className="number">{rating.service.toFixed(1)}</div>
                 <div className="text">Phục vụ</div>
               </div>
               <div className="rating-count">
-                <div className="number">9.9</div>
+                <div className="number">{rating.quality.toFixed(1)}</div>
                 <div className="text">Chất lượng</div>
               </div>
               <div className="rating-count">
-                <div className="number">9.9</div>
+                <div className="number">{rating.space.toFixed(1)}</div>
                 <div className="text">Không gian</div>
               </div>
               <div className="rating-comment">
-                <div className="number">410</div>
+                <div className="number">{posts.length}</div>
                 <div className="text">Bình luận</div>
               </div>
             </div>
@@ -323,21 +395,33 @@ const RestaurantDetail = (props) => {
             <div className="menu-box">
               <div className="menu-box-header">
                 <div className="text">Thực đơn</div>
-                <div
-                  className="add-dish-btn"
-                  onClick={() => setAddDish(!showAddDish)}
-                >
-                  Thêm món
-                </div>
+                {props.isAdmin === 1 ? (
+                  <div
+                    className="add-dish-btn"
+                    onClick={() => setAddDish(!showAddDish)}
+                  >
+                    Thêm món
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
               <div className="menu-box-body">
                 {menu.map((item, index) => {
                   return (
                     <div className="menu-item" key={index}>
-                      <div className="menu-item-img">
+                      <div
+                        className="menu-item-img"
+                        onClick={() => handleShowDishDetail(item.id)}
+                      >
                         <img src={item.image} alt="menu" />
                       </div>
-                      <div className="menu-item-name">{item.name}</div>
+                      <div
+                        className="menu-item-name"
+                        onClick={() => handleShowDishDetail(item.id)}
+                      >
+                        {item.name}
+                      </div>
                       <div className="menu-item-price">
                         <span className="price">{item.price}đ</span>
                         <div className="btn-add">
@@ -354,46 +438,66 @@ const RestaurantDetail = (props) => {
             </div>
             <div className="comment-box">
               <div className="list-comment">
-                <div className="comment-item">
-                  <div className="comment-item-header">
-                    <div className="avatar">
-                      <img
-                        src="https://images.foody.vn/usr/g2727/27263966/avt/c40x40/foody-avatar-1a56d9f9-cc86-49c8--553ba977-220412110440.jpg"
-                        alt="avatar"
-                      />
-                    </div>
-                    <div className="info">
-                      <div className="name">Hieu Minh</div>
-                      <div className="time">13/5/2022 11:27</div>
-                    </div>
-                    <div className="rating">
-                      <span>10</span>
-                    </div>
-                  </div>
-                  <div className="comment-item-body">
-                    <div className="restaurant-name">
-                      Cháo Sườn Sụn 88 - Cháo Gia Truyền - Shop Online
-                    </div>
-                    <br />
-                    <div className="comment-content">
-                      <span>Cháo ăn rất ngon . Sụn ăn mềm ăn đã cái miệng</span>
-                    </div>
-                  </div>
-                  <div className="comment-item-footer">
-                    <div className="like-btn comment-btn">
-                      <i class="fas fa-heart"></i>
-                      Thích
-                    </div>
-                    <div className="reply-btn comment-btn">
-                      <i class="fas fa-comment"></i>
-                      Thảo luận
-                    </div>
-                    <div className="report-btn comment-btn">
-                      <i class="fas fa-exclamation-triangle"></i>
-                      Báo lỗi
-                    </div>
-                  </div>
-                </div>
+                {posts?.map((item, index) => {
+                  return (
+                    <>
+                      <div className="comment-item">
+                        <div className="comment-item-header">
+                          <div className="avatar">
+                            <img
+                              src={
+                                item.user.image ||
+                                "https://images.foody.vn/usr/g2727/27263966/avt/c40x40/foody-avatar-1a56d9f9-cc86-49c8--553ba977-220412110440.jpg"
+                              }
+                              alt="avatar"
+                            />
+                          </div>
+                          <div className="info">
+                            <div className="name">{item.user.name}</div>
+                            <div className="time">
+                              {moment(item.created_at).format(
+                                "DD/MM/YYYY hh:mm"
+                              )}
+                            </div>
+                          </div>
+                          <div className="rating">
+                            <span>
+                              {(
+                                (parseFloat(item.location) +
+                                  parseFloat(item.price) +
+                                  parseFloat(item.service) +
+                                  parseFloat(item.quality) +
+                                  parseFloat(item.space)) /
+                                5
+                              ).toFixed(1)}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="comment-item-body">
+                          <div className="restaurant-name">{item.title}</div>
+                          <br />
+                          <div className="comment-content">
+                            <span>{item.content}</span>
+                          </div>
+                        </div>
+                        <div className="comment-item-footer">
+                          <div className="like-btn comment-btn">
+                            <i class="fas fa-heart"></i>
+                            Thích
+                          </div>
+                          <div className="reply-btn comment-btn">
+                            <i class="fas fa-comment"></i>
+                            Thảo luận
+                          </div>
+                          <div className="report-btn comment-btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Báo lỗi
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
               </div>
               <div className="comment-summary">
                 <div className="comment-summary-header">
@@ -439,12 +543,17 @@ const RestaurantDetail = (props) => {
 
                 <div className="blank-box"></div>
 
-                <div className="comment-btn">
-                  <span>
-                    <i class="fas fa-comment"></i>
-                    Viết bình luận
-                  </span>
-                </div>
+                {props.isAdmin === 0 ? (
+                  <CommentModal
+                    restaurant={restaurant}
+                    restaurant_id={id}
+                    user_id={props.adminInfo.id}
+                    token={props.token}
+                    rating={rating}
+                  />
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
@@ -458,6 +567,8 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.admin.isLoggedIn,
     token: state.admin.token,
+    isAdmin: state.admin.isAdmin,
+    adminInfo: state.admin.adminInfo,
   };
 };
 

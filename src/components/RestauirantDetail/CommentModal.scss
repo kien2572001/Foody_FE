@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.get-comment-modal{
+    width: 1000px!important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.get-comment-modal-content{
+    width: 1000px!important;
+    background: #eee!important;
+    border-radius: 2px;
+}
+
+.get-comment-modal-header{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    float: left;
+    background: #f6f6f6;
+    padding: 12px 15px;
+}
+
+.get-comment-modal-body{
+    padding: 15px;
+    .infor-box-left{
+        width: 300px;
+        float: left;
+        .img-container{
+            max-height: 188px;
+            border-radius: 2px;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .restaurant-infor-box{
+            overflow: hidden;
+            clear: both;
+            margin: 0 0 10px 0;
+            .rating{
+                float: left;
+                margin: 10px 0 0;
+                color: #fff;
+                background: #e52402;
+                text-align: center;
+                border-radius: 50%;
+                display: block;
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+                line-height: 32px;
+                overflow: hidden;
+            }
+
+            .text-container{
+                float: left;
+                width: 255px;
+                margin-left: 10px;
+                margin-top: 5px;
+                text-overflow: ellipsis;
+                .restaurant-name{
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                    font-weight: 700;
+                    color: #000;
+                    font-size: 14px;
+                }
+
+                .restaurant-address{
+                    width: 100%;
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                    font-weight: 400;
+                    color: #666;
+                    font-size: 12px;
+                }
+            }
+
+            
+        }
+
+        .summary-box{
+            border: 1px solid #ddd;
+            background: #fff;
+            padding: 10px;
+            overflow: hidden;
+            border-radius: 2px;
+            .comment-count{
+                text-align: center;
+                padding-bottom: 15px;
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            .rating-box{
+                margin-bottom: 10px;
+                .rating-item{
+                    padding: 3px 0;
+                    display: inline-block;
+                    float: none;
+                    width: 22%;
+                    clear: both;
+                    margin-right: 5px;
+                    font-size: 12px;
+                    text-align: center;
+                    white-space: nowrap;
+                    .rating-item-number{
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+
+                    .rating-item-text{
+
+                    }
+                }
+            }
+            .process-box{
+                display: block;
+                float: left;
+                width: 100%;
+                .title{
+                    font-weight: 700;
+                    float: left;
+                    line-height: 24px;
+                    width: 100px;
+                    font-size: 12px;
+                }
+
+                ul{
+                    display: block;
+                    float: left;
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        list-style: none;
+                        padding: 3px 0;
+                        display: block;
+                        float: none;
+                        clear: both;
+                        font-size: 12px;
+                        line-height: 1.4em;
+                        label{
+                            display: block;
+                            float: left;
+                            width: 100px;
+                        }
+                        .process-bar{
+                            height: 10px;
+                            float: left;
+                            width: 115px;
+                            text-align: left;
+                            overflow: hidden;
+                            border: 1px solid #ddd;
+                            color: #333;
+                            .process-bar-inner{
+                                width: 100%;
+                                background-image: url('https://www.foody.vn/style/css/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png');   
+                                margin: -1px;
+                                height: 100%;
+                                background-position-x: initial;
+                                background-position-y: initial;
+                                background-size: initial;
+                                background-repeat: repeat-x;
+                                background-attachment: initial;
+                                background-origin: initial;
+                                background-clip: initial;
+                                background-color: rgb(246, 168, 40);
+
+                            }
+                        }
+                        span{
+                            display: block;
+                            float: right;
+                            width: 25px;
+                            
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    .infor-box-right{
+        font-family: 'Poppins', sans-serif;
+        width: 650px;
+        float: right;
+        background-color: #fff;
+        .input-box{
+            height: 415px;
+            background-color: #fff;
+
+            // Đánh giá
+            .rating-title{
+                font-size: 20px;
+                font-weight: bold;
+                padding: 10px;
+            
+            }
+
+            .rating-box{
+                padding: 10px;
+                box-sizing: border-box;
+                width: 100%;
+                ul{
+                    display: block;
+                    padding: 10px 5px;
+                    li{
+                        padding: 7px 0;
+                        display: block;
+                        float: left;
+                        clear: both;
+                        width: 100%;
+                        box-sizing: border-box;
+                        .form-label{
+                            display: block;
+                            float: left;
+                            width: 100px;
+                            font-weight: 700;
+                        }
+
+                        .form-range{
+                            display: block;
+                            float: left;
+                            width: 485px;
+                            font-weight: 700;
+                        }
+
+                        .score{
+                            display: block;
+                            float: left;
+                            font-weight: 700;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+
+            .title-input{
+                width: 100%;
+                box-sizing: border-box;
+                border: 0;
+                padding: 10px;
+                border-bottom: #f8f8f8 1px solid;
+                font-weight: 700;
+                //margin-bottom: 5px;
+    
+                &:focus{
+                    outline: none;
+                }
+            }
+    
+            .content-input{
+                max-height: 240px;
+                resize: none;
+                line-height: unset;
+                height: 240px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                min-height: 40px;
+                padding: 0 10px;
+                border: none;
+                overflow: auto;
+                padding: 10px;
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            .upload-box{
+                width: 100%;
+                float: left;
+                padding: 10px;
+                box-sizing: border-box;
+                height: 115px;
+                .container{
+                    display: block;
+                    float: left;
+                    width: 100px;
+                    background: #efefef;
+                    text-align: center;
+                    height: 100px;
+                    padding: 40px 5px 0;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    white-space: normal;
+                    input{
+                        width: 100%;
+                        height: 100%;
+                    }
+                
+                }
+
+                .image-box{
+                    display: block;
+                    float: left;
+                    width: 100px;
+                    height: 100px;
+                    margin-left: 5px;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    white-space: normal;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        .btn-box{
+            float: left;
+            font-size: 14px;
+            width: 100%;
+            clear: both;
+            background: #ccc;
+            box-sizing: border-box;
+            ul{
+                display: block;
+                float: left;
+                margin: 0;
+                padding: 0;
+                li{
+                    
+                    display: block;
+                    float: left;
+                    padding: 15px 19px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    list-style: none;
+                }
+
+                .active{
+                    color: #0090f2;
+                    background: #fff;
+                }
+                
+            }
+            .btn{
+                background: #1f9203;
+                color: #fff;
+                padding: 10px 20px;
+                display: block;
+                float: right;
+                border-radius: 2px;
+                margin: 5px;
+                height: auto;
+                text-decoration: none;
+                outline: 0;
+                cursor: pointer;
+                text-align: center;
+                
+            }
+        }
+    }
+}
+
+.get-comment-modal-footer{
+
+}

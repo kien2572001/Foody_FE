@@ -22,6 +22,7 @@ const appReducer = (state = initialState, action) => {
         isLoggedIn: false,
         adminInfo: null,
         token: null,
+        isAdmin: false,
       };
 
     case actionTypes.SET_TOKEN:

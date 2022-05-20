@@ -29,10 +29,13 @@ const NavBar = (props) => {
           >
             <div className="name-tag">
               <div className="say-hello">Good morning</div>
-              <div className="name">James Sullivan</div>
+              <div className="name">{props.adminInfo.name}</div>
             </div>
             <img
-              src="https://koki.dexignzone.com/react/demo/static/media/12.99ac3757.png"
+              src={
+                props.adminInfo.image ||
+                "https://koki.dexignzone.com/react/demo/static/media/12.99ac3757.png"
+              }
               alt="avatar"
               className="avatar"
             />

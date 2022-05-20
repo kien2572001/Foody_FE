@@ -35,28 +35,36 @@ const RestaurantItem = (props) => {
           </div>
           <div className="info-box">
             <div className="header-text">
-              <div
-                className="drop-down-btn"
-                onClick={() => handleShowDropdown()}
-              >
-                <div className="drop-down-icon">
-                  <i class="fas fa-ellipsis-v"></i>
-                </div>
-              </div>
-              <div className={showDropdown ? "list-box display" : "list-box"}>
-                <div className="list-item" onClick={() => handleEdit()}>
-                  Edit
-                </div>
-                <div
-                  className="list-item"
-                  style={{ color: "red" }}
-                  onClick={() => {
-                    handleDelete(props.restaurant.id);
-                  }}
-                >
-                  Delete
-                </div>
-              </div>
+              {props.isAdmin === 1 ? (
+                <>
+                  <div
+                    className="drop-down-btn"
+                    onClick={() => handleShowDropdown()}
+                  >
+                    <div className="drop-down-icon">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                  </div>
+                  <div
+                    className={showDropdown ? "list-box display" : "list-box"}
+                  >
+                    <div className="list-item" onClick={() => handleEdit()}>
+                      Edit
+                    </div>
+                    <div
+                      className="list-item"
+                      style={{ color: "red" }}
+                      onClick={() => {
+                        handleDelete(props.restaurant.id);
+                      }}
+                    >
+                      Delete
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
 
               <div className="id">#{props.restaurant.id}</div>
               <Link to={`/restaurant/${props.restaurant.id}`} className="name">

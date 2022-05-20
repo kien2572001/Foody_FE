@@ -7,7 +7,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import NavBar from "../NavBar/NavBar";
 import "./Dashbroad.scss";
 import SideBar from "../SideBar/SideBar";
-
 //react router
 
 import { connect } from "react-redux";
@@ -20,7 +19,7 @@ import Home from "../Home/Home";
 import UserManage from "./UserManage";
 import RestaurantDetail from "../RestauirantDetail/RestaurantDetail";
 
-const Dashbroad = () => {
+const Dashbroad = (props) => {
   const [title, setTitle] = useState("Home");
 
   const changeTitle = (title) => {
@@ -39,6 +38,11 @@ const Dashbroad = () => {
             <Switch>
               <Route path="/users-manage" exact component={UserManage} />
               <Route
+                path="/restaurant-manage"
+                exact
+                component={RestaurantManage}
+              />
+              <Route
                 path="/restaurants-manage"
                 exact
                 component={RestaurantManage}
@@ -54,4 +58,17 @@ const Dashbroad = () => {
   );
 };
 
-export default Dashbroad;
+const mapStateToProps = (state) => {
+  return {
+    started: state.app.started,
+    isLoggedIn: state.admin.isLoggedIn,
+    adminInfo: state.admin.adminInfo,
+    isAdmin: state.admin.isAdmin,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashbroad);
